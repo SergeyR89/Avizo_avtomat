@@ -29,7 +29,6 @@ def look_video_youtub(driver, action, By, login):
     choice_item_menu.select_item_menu(driver, action, By, 4)
     sleep(2)
 
-    # wrapper_links = driver.find_element(By.ID, 'contentwrapper')
     wrapper_links = wait.until(ESi.visibility_of_element_located((By.ID, 'contentwrapper')))
     serfing_links = list(wrapper_links.find_elements(By.CLASS_NAME, 'work-serf'))[2:]
     steps_to_end = len(serfing_links)
@@ -42,6 +41,7 @@ def look_video_youtub(driver, action, By, login):
     for links in serfing_links:
         driver.switch_to.window(driver.window_handles[0])
         print('start', steps_to_end)
+
 # blok if start
         if not steps:
             scroll += 300
@@ -51,7 +51,7 @@ def look_video_youtub(driver, action, By, login):
                 steps = 4
             driver.execute_script(f'window.scrollTo(0, {scroll})')
 
-        if step_bad == 9:
+        if step_bad == 10:
             return 'Much Bads in Youtub'
             break
         steps_to_end -= 1
@@ -95,11 +95,11 @@ def look_video_youtub(driver, action, By, login):
 #             print('Problem in play')
 #             driver.close()
 #             continue
-#  f
+#
         dots_click.dot_click(action, {'x': (300, 650), 'y': (250, 600)})
         sleep(times_vis + 3)
+
         # capcha_blok = driver.find_element(By.ID, 'capcha-tr-block')
-        # wait.until(ECi.visibility_of(capcha_blok))
-#
-        sleep(1)
+        # wait.until(ECi.visibility_of(capcha_blok))#
+
         driver.close()
